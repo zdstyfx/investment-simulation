@@ -203,7 +203,6 @@ function AuthPanel({ mode, onDone, initialRegister = false }) {
             {register ? '已有账号，去登录' : '没有账号，注册小组'}
           </button>
         )}
-        {mode === 'admin' && <p className="hint">开发默认账号：admin / admin123，可用环境变量覆盖。</p>}
       </form>
     </main>
   );
