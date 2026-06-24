@@ -648,10 +648,15 @@ function PlayApp() {
     ]);
     setState(stateData);
     setMe(meData);
-    if (!selectedTargetId && stateData.teams?.length) {
+    setSelectedTargetId((currentTargetId) => {
+      if (!stateData.teams?.length) return null;
+      const currentStillValid = stateData.teams.some(
+        (team) => team.membership_id === currentTargetId && team.membership_id !== stateData.my_membership_id
+      );
+      if (currentStillValid) return currentTargetId;
       const firstTarget = stateData.teams.find((team) => team.membership_id !== stateData.my_membership_id);
-      if (firstTarget) setSelectedTargetId(firstTarget.membership_id);
-    }
+      return firstTarget ? firstTarget.membership_id : null;
+    });
   }
 
   useEffect(() => {
