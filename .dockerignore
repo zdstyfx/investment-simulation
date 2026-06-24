@@ -1,0 +1,9 @@
+.data
+.git
+.agents
+.codex
+dist
+node_modules
+npm-debug.log
+Dockerfile
+DEPLOY_NORTHFLANK.md
