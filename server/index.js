@@ -21,6 +21,7 @@ db.exec('PRAGMA foreign_keys = ON');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-change-me';
 const PORT = Number(process.env.PORT || 3001);
+const HOST = process.env.HOST || '0.0.0.0';
 
 const defaultConfig = {
   group_count: 10,
@@ -931,6 +932,6 @@ app.use((err, _req, res, _next) => {
   res.status(status).json({ error: err.error || 'INTERNAL_ERROR', reason: err.reason || err.message || 'Internal error' });
 });
 
-app.listen(PORT, () => {
-  console.log(`API server listening on http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`API server listening on http://${HOST}:${PORT}`);
 });
